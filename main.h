@@ -7,4 +7,6 @@
 #include <string.h>
 #include <sys/wait.h>
 
+void prompt(void);
+
 #endif
