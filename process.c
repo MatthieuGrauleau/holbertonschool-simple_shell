@@ -33,5 +33,4 @@ void process(char *line)
             exit(EXIT_FAILURE);
         }
 		}
-
 }
