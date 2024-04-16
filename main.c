@@ -1,10 +1,14 @@
 #include "main.h"
 
-int main (void)
+int main(void)
 {
-	if (isatty(STDIN_FILENO) == 1)
+	if(isatty(STDIN_FILENO) == 1)
 	{
-		prompt();
+		while (1)
+		{
+			prompt();
+		}
+
 	}
 
 	return (0);
