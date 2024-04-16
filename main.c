@@ -4,7 +4,7 @@ int main(void)
 {
 	char *line;
 
-	if(isatty(STDIN_FILENO) == 1)
+	if (isatty(STDIN_FILENO) == 1)
 	{
 		while (1)
 		{
