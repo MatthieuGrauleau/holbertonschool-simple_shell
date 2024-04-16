@@ -10,5 +10,6 @@
 void prompt(void);
 int main(void);
 char *get_line(void);
+int process(char *line);
 
 #endif

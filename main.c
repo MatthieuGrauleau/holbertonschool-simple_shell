@@ -2,12 +2,15 @@
 
 int main(void)
 {
+	char *line;
+
 	if (isatty(STDIN_FILENO == 1))
 	{
 		while (1)
 		{
 			prompt();
-			get_line();
+			line = get_line();
+			process(line);
 		}
 	}
 	return (0);

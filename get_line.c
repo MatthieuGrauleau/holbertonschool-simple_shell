@@ -12,8 +12,11 @@ char *get_line(void)
 			printf("end of a file\n");
 			exit(EXIT_SUCCESS);
 		}
-		printf("cannot read the stdin \n");
-		exit(EXIT_FAILURE);
+		else
+		{
+			printf("cannot read the stdin \n");
+			exit(EXIT_FAILURE);
+		}
 	}
 	return (buff);
 }
