@@ -8,5 +8,6 @@
 #include <sys/wait.h>
 
 void prompt(void);
+char *get_line(void);
 
 #endif
