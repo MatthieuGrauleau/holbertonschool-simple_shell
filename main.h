@@ -8,7 +8,6 @@
 #include <sys/wait.h>
 
 void prompt(void);
-int main(void);
 char *get_line(void);
 void process(char *line);
 
