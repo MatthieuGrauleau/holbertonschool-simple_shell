@@ -9,5 +9,6 @@
 
 void prompt(void);
 char *get_line(void);
+void process(char *line);
 
 #endif
