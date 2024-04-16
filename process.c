@@ -1,31 +1,37 @@
 #include "main.h"
 
-int process(char *line)
+void process(char *line)
 {
- pid_t pid;
+	pid_t pid;
+	int status;
 
- char  *argv[2];
- argv[0] = line;
- argv[1] = NULL;
+	char  *argv[2];
+	argv[0] = line;
+ 	argv[1] = NULL;
+	
 
- pid = fork();
+	pid = fork();
 
- if (pid == 0)
- {
-	if(execve(line, argv, NULL) == -1)
+	if (pid == 0)
 	{
-		perror("./hsh");
+		if(execve(argv[0], argv, NULL) == -1)
+		{
+			perror("./hsh");
+			exit(EXIT_FAILURE);
+		}
+	}
+		else if (pid == -1)
+		{
+		perror("fork");
 		exit(EXIT_FAILURE);
-	}
-	else if (pid > 0) 
-	{
-    wait(NULL);
-	} 
-	else 
-	{
-    perror("fork");
-    exit(EXIT_FAILURE);
-	}
- }
- return (0);
+		}
+		else
+		{
+			 if (waitpid(pid, &status, 0) == -1)
+        {
+            perror("waitpid");
+            exit(EXIT_FAILURE);
+        }
+		}
+
 }

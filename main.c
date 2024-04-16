@@ -6,12 +6,12 @@ int main(void)
 
 	if (isatty(STDIN_FILENO == 1))
 	{
-		while (1)
+		do
 		{
 			prompt();
 			line = get_line();
 			process(line);
-		}
+		} while (1);
 	}
 	return (0);
 }
