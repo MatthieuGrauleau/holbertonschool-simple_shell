@@ -23,7 +23,7 @@ void process(char *line)
 
 	if (pid == 0)
 	{
-		if (execve(args[0], args, NULL) == -1)
+		if (execve(args[0], args, __environ) == -1)
 		{
 			perror("./hsh");
 			exit(EXIT_FAILURE);
@@ -36,10 +36,6 @@ void process(char *line)
 	}
 	else
 	{
-		if (waitpid(pid, &status, 0) == -1)
-		{
-			perror("waitpid");
-			exit(EXIT_FAILURE);
-		}
+		wait(&status);
 	}
 }
