@@ -14,6 +14,11 @@ int main(void)
 		}
 
 	}
+	else 
+	{
+		line = get_line();
+		process(line);	
+	}
 
 	return (0);
 }
