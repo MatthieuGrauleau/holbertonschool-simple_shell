@@ -4,16 +4,24 @@ void process(char *line)
 {
 	pid_t pid;
 	int status;
-	char *args[2];
+	char *args[64];
+	char *token;
+	int i = 0;
+	
+	token = strtok(line, " \t\n");
+	while (token != NULL)
+    {
+        args[i++] = token;
+        token = strtok(NULL, " \t\n");
+    }
 
-	args[0] = line;
-	args[1] = NULL;
+	args[i] = NULL;
 
 	pid = fork();
 
 	if (pid == 0)
 	{
-		if (execve(line, args, NULL) == -1)
+		if (execve(args[0], args, __environ) == -1)
 		{
 			perror("./hsh");
 			exit(EXIT_FAILURE);
