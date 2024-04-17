@@ -1,3 +1,4 @@
+![HEADER](https://github.com/MatthieuGrauleau/holbertonschool-simple_shell/blob/david/img/header.png)
 
 # :computer: SIMPLE SHELL / Holberton School :fr:
 
