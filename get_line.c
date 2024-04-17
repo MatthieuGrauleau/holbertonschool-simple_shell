@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * get_line - function that get the line
+ *
+ * Return: the line.
+*/
 char *get_line(void)
 {
 	char *line = NULL;

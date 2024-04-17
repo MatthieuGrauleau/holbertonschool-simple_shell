@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * main - entry point
+ *
+ * Return: 0 for success.
+*/
+
 int main(void)
 {
 	char *cmd;
@@ -15,11 +21,11 @@ int main(void)
 		}
 
 	}
-	else 
+	else
 	{
 		cmd = get_line();
 		process(cmd);
-		free(cmd);	
+		free(cmd);
 	}
 
 	return (0);

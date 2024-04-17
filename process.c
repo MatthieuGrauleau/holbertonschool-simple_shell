@@ -1,10 +1,16 @@
 #include "main.h"
 
+/**
+ * process - functiont that process.
+ *
+ * @line: string.
+*/
 void process(char *line)
 {
 	pid_t pid;
 	int status;
 	char *args[2];
+
 	args[0] = line;
 	args[1] = NULL;
 	
