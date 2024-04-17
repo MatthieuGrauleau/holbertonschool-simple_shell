@@ -1,26 +1,31 @@
 #include "main.h"
 
+/**
+ * main - entry point
+ *
+ * Return: 0 for success.
+*/
+
 int main(void)
 {
-	char *line;
+	char *cmd;
 
 	if (isatty(STDIN_FILENO) == 1)
 	{
 		while (1)
 		{
 			prompt();
-			line = get_line();
-			process(line);
-			free(line);
-
+			cmd = get_line();
+			process(cmd);
+			free(cmd);
 		}
 
 	}
-	else 
+	else
 	{
-		line = get_line();
-		process(line);
-		free(line);	
+		cmd = get_line();
+		process(cmd);
+		free(cmd);
 	}
 
 	return (0);
