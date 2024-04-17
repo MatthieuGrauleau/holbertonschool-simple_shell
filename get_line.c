@@ -2,10 +2,10 @@
 
 char *get_line(void)
 {
-	char *buff = NULL;
-	size_t buff_size = 0;
+	char *line = NULL;
+	size_t line_size = 0;
 
-	if (getline(&buff, &buff_size, stdin) == -1)
+	if (getline(&line, &line_size, stdin) == -1)
 	{
 		if (feof(stdin))
 		{
@@ -18,5 +18,5 @@ char *get_line(void)
 			exit(EXIT_FAILURE);
 		}
 	}
-	return (buff);
+	return (line);
 }

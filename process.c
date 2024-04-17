@@ -4,12 +4,15 @@ void process(char *line)
 {
 	pid_t pid;
 	int status;
+	char *args[2];
+	args[0] = line;
+	args[1] = NULL;
 	
-	char *token;
+	/**char *token;
 	char *args[64];
-	int i = 0;
+	int i = 0;*/
 
-	token = strtok(line, " \t\n");
+	/**token = strtok(line, " \t\n");
 
 	while (token != NULL)
 	{
@@ -17,7 +20,7 @@ void process(char *line)
 		token = strtok(NULL, " \t\n");
 	}
 
-	args[i] = NULL;
+	args[i] = NULL;*/
 
 	pid = fork();
 
