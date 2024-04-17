@@ -27,6 +27,5 @@ int main(void)
 		process(cmd);
 		free(cmd);
 	}
-
 	return (0);
 }
