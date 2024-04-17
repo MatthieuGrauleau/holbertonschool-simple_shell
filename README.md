@@ -1,7 +1,7 @@
 
 # :computer: SIMPLE SHELL / Holberton School :fr:
 
-## :memo: DDESCRIPTION & ENVIRONEMENT :
+## :memo: DESCRIPTION & ENVIRONEMENT :
 
 This project is initiated by Holberton School France for creating a simple shell writen in C.
 
