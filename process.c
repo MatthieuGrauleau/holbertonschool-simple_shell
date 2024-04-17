@@ -13,20 +13,6 @@ void process(char *line)
 
 	args[0] = line;
 	args[1] = NULL;
-	
-	/**char *token;
-	char *args[64];
-	int i = 0;*/
-
-	/**token = strtok(line, " \t\n");
-
-	while (token != NULL)
-	{
-		args[i++] = token;
-		token = strtok(NULL, " \t\n");
-	}
-
-	args[i] = NULL;*/
 
 	pid = fork();
 
