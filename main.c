@@ -11,13 +11,16 @@ int main(void)
 			prompt();
 			line = get_line();
 			process(line);
+			free(line);
+
 		}
 
 	}
 	else 
 	{
 		line = get_line();
-		process(line);	
+		process(line);
+		free(line);	
 	}
 
 	return (0);

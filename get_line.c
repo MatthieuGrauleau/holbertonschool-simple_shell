@@ -10,11 +10,13 @@ char *get_line(void)
 		if (feof(stdin))
 		{
 			printf("End of a file\n");
+			free(buff);
 			exit(EXIT_SUCCESS);
 		}
 		else
 		{
 			printf("error");
+			free(buff);
 			exit(EXIT_FAILURE);
 		}
 	}
