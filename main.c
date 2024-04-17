@@ -4,7 +4,7 @@ int main(void)
 {
 	char *line;
 
-	if (isatty(STDIN_FILENO) == 1)
+	if(isatty(STDIN_FILENO) == 1)
 	{
 		while (1)
 		{
@@ -14,10 +14,10 @@ int main(void)
 		}
 
 	}
-	else 
+	else
 	{
 		line = get_line();
-		process(line);	
+		process(line);
 	}
 
 	return (0);
