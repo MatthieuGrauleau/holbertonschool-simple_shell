@@ -36,6 +36,10 @@ void process(char *line)
 	}
 	else
 	{
-		wait(&status);
+		if (waitpid(pid, &status, 0) == -1)
+		{
+			perror("waitpid");
+			exit(EXIT_FAILURE);
+		}
 	}
 }
