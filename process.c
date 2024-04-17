@@ -23,7 +23,7 @@ void process(char *line)
 
 	if (pid == 0)
 	{
-		if (execve(args[0], args, __environ) == -1)
+		if (execve(args[0], args, NULL) == -1)
 		{
 			perror("./hsh");
 			exit(EXIT_FAILURE);
