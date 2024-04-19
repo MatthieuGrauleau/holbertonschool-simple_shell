@@ -9,6 +9,7 @@
 int main(void)
 {
 	char *line;
+	char **tokens;
 
 	if (isatty(STDIN_FILENO) == 1)
 	{
@@ -16,8 +17,15 @@ int main(void)
 		{
 			prompt();
 			line = get_line();
-			str_tok(line);
+			tokens = str_tok(line);
+			process(tokens);
 		}
+	}
+	while (1)
+	{
+		line = get_line();
+		tokens = str_tok(line);
+		process(tokens);
 	}
 	return (0);
 }
