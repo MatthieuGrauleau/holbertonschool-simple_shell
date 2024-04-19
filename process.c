@@ -4,9 +4,8 @@
  * process - function that process.
  *
  * @token: pointer to an array of string from str_tok.
- * Return: 1;
 */
-int process(char **token)
+void process(char **token)
 {
 	pid_t pid;
 	int status;
@@ -35,5 +34,4 @@ int process(char **token)
 			exit(EXIT_FAILURE);
 		}
 	}
-	return (1);
 }

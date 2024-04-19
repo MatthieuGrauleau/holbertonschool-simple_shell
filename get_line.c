@@ -3,25 +3,27 @@
 /**
  * get_line - function that get the line
  *
+ * @input_stream: to get interactif mode or not
+ *
  * Return: the line.
 */
 char *get_line(void)
 {
 	char *line = NULL;
 	size_t line_size = 0;
+	int read;
+	read = getline(&line, &line_size, stdin);
 
-	if (getline(&line, &line_size, stdin) == -1)
+	if (read == 0)
 	{
-		if (feof(stdin))
-		{
 			free(line);
 			exit(EXIT_SUCCESS);
-		}
-		else
+	}
+		else if (read < 0)
 		{
 			free(line);
 			exit(EXIT_FAILURE);
 		}
-	}
+
 	return (line);
 }
