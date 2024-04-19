@@ -14,7 +14,8 @@ extern char **environ;
 
 void prompt(void);
 char *get_line(void);
-void process(char **tokens);
+int process(char **tokens);
 char **str_tok(char *line);
+int main(void);
 
 #endif
