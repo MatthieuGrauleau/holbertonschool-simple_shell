@@ -25,7 +25,7 @@ char **str_tok(char *line)
 	{
 		args[i] = token;
 		i++;
-		if (i >= size)
+		/**if (i >= size)
 		{
 			size += size;
 			args = realloc(args, size * sizeof(char *));
@@ -34,7 +34,7 @@ char **str_tok(char *line)
 				fprintf(stderr, "problem allocation memory for args \n");
 				exit(EXIT_FAILURE);
 			}
-		}
+		}*/
 		token = strtok(NULL, " \t\n");
 	}
 
