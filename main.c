@@ -8,41 +8,14 @@
 
 int main(void)
 {
-	char *line;
-	char **tokens;
-	int status = 0;
 
 	if (isatty(STDIN_FILENO) == 1)
 	{
-		do
+		while (1)
 		{
 			prompt();
-			line = get_line();
-			tokens = str_tok(line);
-			status = process(tokens);
-			if (status == -1)
-			{
-				exit(status);
-			}
-			free(tokens);
-			free(line);
-		}  while (status == 0);
-
-	}
-	else
-	{
-		do
-		{
-			line = get_line();
-			tokens = str_tok(line);
-			status = process(tokens);
-			if (status == -1)
-			{
-				exit(status);
-			}
-			free(tokens);
-			free(line);
-		}  while (status == 0);
+			get_line();
+		}
 	}
 	return (0);
 }
