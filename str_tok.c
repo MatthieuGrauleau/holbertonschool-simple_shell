@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * str_tok - function that split the line from get line in tokens
+ * @line: array of char from get line
+ * Return: the tokens
+*/
 char **str_tok(char *line)
 {
 	char *token;

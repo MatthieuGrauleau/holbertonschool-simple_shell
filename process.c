@@ -3,14 +3,14 @@
 /**
  * process - function that process.
  *
- * @token: pointer to an array of string.
+ * @token: pointer to an array of string from str_tok.
 */
 void process(char **token)
 {
 	pid_t pid;
 	int status;
 	char **env = environ;
-	
+
 	pid = fork();
 
 	if (pid == 0)
