@@ -3,31 +3,19 @@
 /**
  * process - function that process.
  *
- * @line: string.
+ * @token: pointer to an array of string.
 */
-void process(char *line)
+void process(char **token)
 {
 	pid_t pid;
 	int status;
 	char **env = environ;
-	char *token;
-	char *args[64];
-	int i = 0;
-
-	token = strtok(line, " \t\n");
-
-	while (token != NULL)
-	{
-		args[i++] = token;
-		token = strtok(NULL, " \t\n");
-	}
-
-	args[i] = NULL;
+	
 	pid = fork();
 
 	if (pid == 0)
 	{
-		if (execve(args[0], args, env) == -1)
+		if (execve(token[0], token, env) == -1)
 		{
 			perror("./hsh");
 			exit(EXIT_FAILURE);
