@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * main - entry point
@@ -12,29 +10,30 @@ int main(void)
 {
 	char *line;
 	char **tokens;
-	FILE *input_stream;
 
 	if (isatty(STDIN_FILENO) == 1)
 	{
-		input_stream = stdin;
+		while (1)
+		{
+			prompt();
+			line = get_line();
+			tokens = str_tok(line);
+			process(tokens);
+			free(tokens);
+			free(line);
+		}
+
 	}
 	else
 	{
-		input_stream = stdin;
-	}
-
-	while ((line = get_line(input_stream)) != NULL)
-	{
-		tokens = str_tok(line);
-		process(tokens);
-		free(tokens);
-		free(line);
-
-		if (input_stream != stdin)
+		while (1)
 		{
-			break;
+			line = get_line();
+			tokens = str_tok(line);
+			process(tokens);
+			free(tokens);
+			free(line);
 		}
 	}
-
 	return (0);
 }

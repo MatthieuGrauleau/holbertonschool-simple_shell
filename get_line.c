@@ -7,14 +7,14 @@
  *
  * Return: the line.
 */
-char *get_line(FILE *input_stream)
+char *get_line(void)
 {
 	char *line = NULL;
 	size_t line_size = 0;
 
-	if (getline(&line, &line_size, input_stream) == -1)
+	if (getline(&line, &line_size, stdin) == -1)
 	{
-		if (feof(input_stream))
+		if (feof(stdin))
 		{
 			free(line);
 			exit(EXIT_SUCCESS);
