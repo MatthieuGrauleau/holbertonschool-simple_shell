@@ -22,13 +22,15 @@ int process(char **token)
 		}
 		exit(EXIT_FAILURE);
 	}
-	else if (pid == -1)
+	else if (pid < 0)
 	{
 		perror("fork");
 	}
 	else
 	{
-		wait(&status);
+		do {
+			waitpid(pid, &status, WUNTRACED);
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-	return (0);
+	return (-1);
 }

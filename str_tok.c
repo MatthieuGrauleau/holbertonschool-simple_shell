@@ -19,13 +19,14 @@ char **str_tok(char *line)
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(line, " \t\n");
+	token = strtok(line, " \n");
+
 
 	while (token != NULL)
 	{
 		args[i] = token;
 		i++;
-		if (i >= size)
+		/**if (i >= size)
 		{
 			size += size;
 			args = realloc(args, size * sizeof(char *));
@@ -34,8 +35,8 @@ char **str_tok(char *line)
 				fprintf(stderr, "problem allocation memory for args \n");
 				exit(EXIT_FAILURE);
 			}
-		}
-		token = strtok(NULL, " \t\n");
+		}*/
+		token = strtok(NULL, " \n");
 	}
 
 	args[i] = NULL;
