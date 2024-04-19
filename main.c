@@ -1,39 +1,38 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-/**
- * main - entry point
- *
- * Return: 0 for success.
-*/
+#define BUFFER_SIZE 1024
 
-int main(void)
-{
-	char *line;
-	char **tokens;
+int main(void) {
+    char buffer[BUFFER_SIZE];
+    char *args[2];
+    int status;
 
-	if (isatty(STDIN_FILENO) == 1)
-	{
-		while (1)
-		{
-			prompt();
-			line = get_line();
-			tokens = str_tok(line);
-			process(tokens);
-			free(tokens);
-			free(line);
-		}
+    while (1) {
+        printf("$ ");
+        fflush(stdout);
 
-	}
-	else
-	{
-		while (1)
-		{
-			line = get_line();
-			tokens = str_tok(line);
-			process(tokens);
-			free(tokens);
-			free(line);
-		}
-	}
-	return (0);
+        if (fgets(buffer, BUFFER_SIZE, stdin) == NULL) {
+            break;
+        }
+
+        buffer[strcspn(buffer, "\n")] = '\0';
+
+        args[0] = buffer;
+        args[1] = NULL;
+
+        if (fork() == 0) {
+            if (execve(args[0], args, NULL) == -1) {
+                perror("./hsh");
+            }
+            exit(EXIT_FAILURE);
+        } else {
+            wait(&status);
+        }
+    }
+
+    return 0;
 }
