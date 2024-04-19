@@ -12,7 +12,7 @@ int main(void)
 	char **tokens;
 	int status = 0;
 
-	if (isatty(STDIN_FILENO) == 1)
+	if (isatty(fileno(stdin)))
 	{
 		do
 		{
