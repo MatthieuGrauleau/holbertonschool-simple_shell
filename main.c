@@ -8,24 +8,29 @@
 
 int main(void)
 {
-	char *cmd;
+	char *line;
+	char **tokens;
 
 	if (isatty(STDIN_FILENO) == 1)
 	{
 		while (1)
 		{
 			prompt();
-			cmd = get_line();
-			process(cmd);
-			free(cmd);
+			line = get_line();
+			tokens = str_tok(line);
+			process(tokens);
+			free(tokens);
+			free(line);
 		}
 
 	}
 	else
 	{
-		cmd = get_line();
-		process(cmd);
-		free(cmd);
+		line = get_line();
+		tokens = str_tok(line);
+		process(tokens);
+		free(tokens);
+		free(line);
 	}
 	return (0);
 }
