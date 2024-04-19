@@ -4,18 +4,16 @@
 #include <string.h>
 #include <unistd.h>
 
-#define BUFFER_SIZE 1024
-
 int main(void) {
-    char buffer[BUFFER_SIZE];
+    char *buffer = NULL;
+    size_t bufsize = 0;
     char *args[2];
     int status;
 
     while (1) {
-
         prompt();
-		
-        if (fgets(buffer, BUFFER_SIZE, stdin) == NULL) {
+
+        if (getline(&buffer, &bufsize, stdin) == -1) {
             break;
         }
 
@@ -33,6 +31,8 @@ int main(void) {
             wait(&status);
         }
     }
+
+    free(buffer);
 
     return 0;
 }
