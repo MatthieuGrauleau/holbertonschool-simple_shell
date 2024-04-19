@@ -13,7 +13,7 @@ extern char **environ;
 #include <sys/stat.h>
 
 void prompt(void);
-char *get_line(void);
+char *get_line(FILE *input_stream);
 void process(char **tokens);
 char **str_tok(char *line);
 
