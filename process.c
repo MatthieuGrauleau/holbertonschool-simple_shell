@@ -37,7 +37,7 @@ int process(char **token)
 	
 	else
 	{
-		wait(&status);
+		waitpid(pid, NULL, 0);
 	}
-	return (0);
+	return (-1);
 }
