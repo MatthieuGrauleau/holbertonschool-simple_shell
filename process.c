@@ -9,13 +9,12 @@
 int process(char **token)
 {
 	pid_t pid;
-	char **env = environ;
 
 	pid = fork();
 
 	if (pid == 0)
 	{
-		if (execve(token[0], token, env) == -1)
+		if (execve(token[0], token, NULL) == -1)
 		{
 			perror("./hsh");
 		}
