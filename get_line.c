@@ -3,8 +3,6 @@
 /**
  * get_line - function that get the line
  *
- * @input_stream: to get interactif mode or not
- *
  * Return: the line.
 */
 char *get_line(void)
@@ -12,12 +10,13 @@ char *get_line(void)
 	char *line = NULL;
 	size_t line_size = 0;
 	int read;
+
 	read = getline(&line, &line_size, stdin);
 
 	if (read == 0)
 	{
-			free(line);
-			exit(EXIT_SUCCESS);
+		free(line);
+		exit(EXIT_SUCCESS);
 	}
 		else if (read < 0)
 		{
