@@ -23,10 +23,5 @@ char *get_line(void)
 		free(line);
 		exit(EXIT_FAILURE);
 	}
-
-	if (read > 0 && line[read - 1] == '\n')
-	{
-		line[read - 1] = '\0';
-	}
 	return (line);
 }

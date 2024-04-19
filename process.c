@@ -9,7 +9,6 @@
 int process(char **token)
 {
 	pid_t pid;
-	int status;
 	char **env = environ;
 
 	pid = fork();
@@ -28,9 +27,7 @@ int process(char **token)
 	}
 	else
 	{
-		do {
-			waitpid(pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		waitpid(pid, NULL, 0);
 	}
 	return (-1);
 }
