@@ -12,9 +12,9 @@ int main(void) {
     int status;
 
     while (1) {
-        printf("$ ");
-        fflush(stdout);
 
+        prompt();
+		
         if (fgets(buffer, BUFFER_SIZE, stdin) == NULL) {
             break;
         }
