@@ -17,5 +17,6 @@ char *get_line(void);
 int process(char **tokens);
 char **str_tok(char *line);
 int main(void);
+void env(char **environ);
 
 #endif

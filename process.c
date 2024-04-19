@@ -9,23 +9,32 @@
 int process(char **token)
 {
 	pid_t pid;
-	int status;
-	char **env = environ;
+
+	if (token == NULL)
+	{
+		return (0);
+	}
+	if ((strcmp(token[0], "env") == 0) && token[1] == NULL)
+	{
+		env(environ);
+	}
 
 	pid = fork();
 
-	if (pid == 0)
+	if (pid < 0)
 	{
-		if (execve(token[0], token, env) == -1)
+		perror("fork");
+	}
+
+	else if (pid == 0)
+	{
+		if (execve(token[0], token, environ) == -1)
 		{
 			perror("./hsh");
 		}
 		exit(EXIT_FAILURE);
 	}
-	else if (pid == -1)
-	{
-		perror("fork");
-	}
+	
 	else
 	{
 		wait(&status);
