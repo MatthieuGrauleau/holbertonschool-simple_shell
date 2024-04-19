@@ -33,7 +33,7 @@ int main(void)
 	{
 		do
 		{
-			line = get_line();
+			line = read_stream();
 			tokens = str_tok(line);
 			status = process(tokens);
 			free(tokens);
