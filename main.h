@@ -13,9 +13,5 @@ extern char **environ;
 #include <sys/stat.h>
 
 void prompt(void);
-char *get_line(void);
-int process(char **tokens);
-char **str_tok(char *line);
-int main(void);
 
 #endif
