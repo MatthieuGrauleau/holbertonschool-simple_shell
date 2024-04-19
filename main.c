@@ -10,39 +10,18 @@ int main(void)
 {
 	char *line;
 	char **tokens;
-	int status = -1;
 
 	if (isatty(STDIN_FILENO) == 1)
 	{
-		do
+		while (1)
 		{
 			prompt();
 			line = get_line();
 			tokens = str_tok(line);
-			status = process(tokens);		
-			free(tokens);
+			process(tokens);
 			free(line);
-			if (status >= 0)
-			{
-				exit(status);
-			}
-		}  while (status == -1);
-
-	}
-	else
-	{
-		do
-		{
-			line = get_line();
-			tokens = str_tok(line);
-			status = process(tokens);
 			free(tokens);
-			free(line);
-			if (status >= 0)
-			{
-				exit(status);
-			}
-		}  while (status == -1);
+		}
 	}
 	return (0);
 }
