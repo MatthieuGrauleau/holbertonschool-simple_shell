@@ -26,11 +26,14 @@ int main(void)
 	}
 	else
 	{
-		line = get_line();
-		tokens = str_tok(line);
-		process(tokens);
-		free(tokens);
-		free(line);
+		while (1)
+		{
+			line = get_line();
+			tokens = str_tok(line);
+			process(tokens);
+			free(tokens);
+			free(line);
+		}
 	}
 	return (0);
 }
