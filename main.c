@@ -10,6 +10,7 @@ int main(void)
 {
 	char *line;
 	char **tokens;
+	int status = 0;
 
 	if (isatty(STDIN_FILENO) == 1)
 	{
@@ -20,8 +21,27 @@ int main(void)
 			tokens = str_tok(line);
 			process(tokens);
 			free(line);
+			if (status > 0)
+			{
+				exit(status);
+			}
+		}  while (status == 0);
+
+	}
+	else
+	{
+		do
+		{
+			line = get_line();
+			tokens = str_tok(line);
+			status = process(tokens);
 			free(tokens);
-		}
+			free(line);
+			if (status > 0)
+			{
+				exit(status);
+			}
+		}  while (status == 0);
 	}
 	return (0);
 }
