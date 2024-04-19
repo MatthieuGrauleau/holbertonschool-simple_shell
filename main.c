@@ -19,13 +19,12 @@ int main(void)
 			prompt();
 			line = get_line();
 			tokens = str_tok(line);
-			status = process(tokens);
-			if (status == -1)
+			status = process(tokens);		
+			free(tokens);
+			free(line);if (status == -1)
 			{
 				exit(status);
 			}
-			free(tokens);
-			free(line);
 		}  while (status == 0);
 
 	}
@@ -36,12 +35,11 @@ int main(void)
 			line = get_line();
 			tokens = str_tok(line);
 			status = process(tokens);
-			if (status == -1)
+			free(tokens);
+			free(line);if (status == -1)
 			{
 				exit(status);
 			}
-			free(tokens);
-			free(line);
 		}  while (status == 0);
 	}
 	return (0);
