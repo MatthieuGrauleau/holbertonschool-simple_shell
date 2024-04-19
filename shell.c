@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,7 +7,8 @@
 #define BUFFER_SIZE 1024
 
 int main(void) {
-    char buffer[BUFFER_SIZE];
+    char *buffer = NULL;
+    size_t bufsize = 0;
     char *args[2];
     int status;
 
@@ -15,7 +16,7 @@ int main(void) {
         printf("$ ");
         fflush(stdout);
 
-        if (fgets(buffer, BUFFER_SIZE, stdin) == NULL) {
+        if (getline(&buffer, &bufsize, stdin) == -1) {
             break;
         }
 
@@ -34,5 +35,6 @@ int main(void) {
         }
     }
 
+    free(buffer);
     return 0;
 }
