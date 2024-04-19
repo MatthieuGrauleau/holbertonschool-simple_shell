@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	char *line;
+	char *line; 
 	char **tokens;
 
 	if (isatty(STDIN_FILENO) == 1)
