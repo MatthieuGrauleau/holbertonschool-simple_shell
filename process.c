@@ -1,6 +1,5 @@
 #include "main.h"
-#include <sys/wait.h>
-#include <errno.h>
+
 
 /**
  * process - function that process.
