@@ -3,48 +3,39 @@
 /**
  * process - function that process.
  *
- * @line: string.
+ * @token: pointer to an array of string from str_tok.
+ * Return: 0;
 */
-void process(char *line)
+int process(char **token)
 {
 	pid_t pid;
 	int status;
 
-	char *token;
-	char *args[64];
-	int i = 0;
-
-	token = strtok(line, " \t\n");
-
-	while (token != NULL)
+	if (token == NULL)
 	{
-		args[i++] = token;
-		token = strtok(NULL, " \t\n");
+		return (0);
 	}
-
-	args[i] = NULL;
+	if ((strcmp(token[0], "env") == 0) && token[1] == NULL)
+	{
+		env(environ);
+	}
 
 	pid = fork();
 
 	if (pid == 0)
 	{
-		if (execve(args[0], args, NULL) == -1)
+		if (execve(token[0], token, environ) == -1)
 		{
 			perror("./hsh");
-			exit(EXIT_FAILURE);
+			free(token);
+			exit(errno);
 		}
 	}
-	else if (pid == -1)
-	{
-		perror("fork");
-		exit(EXIT_FAILURE);
-	}
+	
 	else
 	{
-		if (waitpid(pid, &status, 0) == -1)
-		{
-			perror("waitpid");
-			exit(EXIT_FAILURE);
-		}
+		wait(&status);
+		return (status);
 	}
+	return (0);
 }

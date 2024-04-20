@@ -9,21 +9,23 @@ char *get_line(void)
 {
 	char *line = NULL;
 	size_t line_size = 0;
+	int read;
 
-	if (getline(&line, &line_size, stdin) == -1)
+	if (isatty(STDIN_FILENO))
 	{
-		if (feof(stdin))
-		{
-			printf("End of a file\n");
-			free(line);
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			printf("error");
-			free(line);
-			exit(EXIT_FAILURE);
-		}
+		prompt();
+	}
+
+	read = getline(&line, &line_size, stdin);
+
+	if (read < 0)
+	{
+		free(line);
+		return (NULL);
+	}
+	else if (read == 0)
+	{
+		return (0);
 	}
 	return (line);
 }
