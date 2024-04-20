@@ -18,14 +18,27 @@ int main(void)
 		errno = 0;
 
 			line = get_line();
-			tokens = str_tok(line);
-			status = process(tokens);		
-			free(tokens);
-			free(line);
-			if (status == 200)
+			if (line)
 			{
-				return (0);
+				tokens = str_tok(line);
+				status = process(tokens);		
+				free(tokens);
+				free(line);
+				if (status == 200)
+				{
+					return (0);
+				}
 			}
+			else
+			{
+			if (isatty(STDIN_FILENO))
+			{
+				write(STDOUT_FILENO, "\n", 1);
+			}
+			exit(status);
+			}
+		
+
 	}
 
 	/**else
