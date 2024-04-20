@@ -9,6 +9,7 @@
 int process(char **token)
 {
 	pid_t pid;
+	int status;
 
 	if (token == NULL)
 	{
@@ -38,6 +39,7 @@ int process(char **token)
 	else
 	{
 		waitpid(pid, NULL, 0);
+		return (status);
 	}
 	return (0);
 }

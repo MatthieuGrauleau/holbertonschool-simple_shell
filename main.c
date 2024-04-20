@@ -33,7 +33,7 @@ int main(void)
 	{
 		do
 		{
-			line = read_stream();
+			line = get_line();
 			tokens = str_tok(line);
 			status = process(tokens);
 			free(tokens);
@@ -44,5 +44,5 @@ int main(void)
 			}
 		}  while (status == 0);
 	}
-	return (0);
+	return (status);
 }

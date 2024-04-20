@@ -11,6 +11,7 @@ extern char **environ;
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <errno.h>
 
 void prompt(void);
 char *get_line(void);
