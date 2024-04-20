@@ -8,28 +8,27 @@
 
 int main(void)
 {
-	char *line;
+	char *line = NULL;
 	char **tokens;
 	int status = 0;
+	
 
-	if (isatty(fileno(stdin)))
+	while (1)
 	{
-		do
-		{
-			prompt();
+		errno = 0;
+
 			line = get_line();
 			tokens = str_tok(line);
 			status = process(tokens);		
 			free(tokens);
 			free(line);
-			if (status > 0)
+			if (status == 200)
 			{
-				exit(status);
+				return (0);
 			}
-		}  while (status == 0);
-
 	}
-	else
+
+	/**else
 	{
 		do
 		{
@@ -43,6 +42,6 @@ int main(void)
 				exit(status);
 			}
 		}  while (status == 0);
-	}
+	}*/
 	return (status);
 }

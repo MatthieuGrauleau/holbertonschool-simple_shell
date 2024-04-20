@@ -22,23 +22,19 @@ int process(char **token)
 
 	pid = fork();
 
-	if (pid < 0)
-	{
-		perror("fork");
-	}
-
-	else if (pid == 0)
+	if (pid == 0)
 	{
 		if (execve(token[0], token, environ) == -1)
 		{
 			perror("./hsh");
+			free(token);
+			exit(errno);
 		}
-		exit(EXIT_FAILURE);
 	}
 	
 	else
 	{
-		waitpid(pid, NULL, 0);
+		wait(&status);
 		return (status);
 	}
 	return (0);
