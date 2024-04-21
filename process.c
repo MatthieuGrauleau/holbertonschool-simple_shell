@@ -11,9 +11,9 @@ int process(char **token)
 	pid_t pid;
 	int status;
 
-	if (token == NULL)
+	if (token[0] == NULL)
 	{
-		return (0);
+		return (1);
 	}
 	if ((strcmp(token[0], "env") == 0) && token[1] == NULL)
 	{
@@ -31,7 +31,7 @@ int process(char **token)
 			exit(errno);
 		}
 	}
-	
+
 	else
 	{
 		wait(&status);

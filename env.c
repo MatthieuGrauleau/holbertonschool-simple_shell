@@ -2,7 +2,7 @@
 /**
  * env - print the environment
  * @environ: environment from parents
- * 
+ *
 */
 void env(char **environ)
 {

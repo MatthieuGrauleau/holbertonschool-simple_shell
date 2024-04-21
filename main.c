@@ -11,7 +11,7 @@ int main(void)
 	char *line = NULL;
 	char **tokens;
 	int status = 0;
-	
+
 
 	while (1)
 	{
@@ -21,40 +21,23 @@ int main(void)
 			if (line)
 			{
 				tokens = str_tok(line);
-				status = process(tokens);		
+				status = process(tokens);
 				free(tokens);
 				free(line);
-				if (status == 200)
+				if (status == 45)
 				{
 					return (0);
 				}
 			}
 			else
 			{
-			if (isatty(STDIN_FILENO))
-			{
-				write(STDOUT_FILENO, "\n", 1);
-			}
-			exit(status);
-			}
-		
-
-	}
-
-	/**else
-	{
-		do
-		{
-			line = get_line();
-			tokens = str_tok(line);
-			status = process(tokens);
-			free(tokens);
-			free(line);
-			if (status > 0)
-			{
+				if (isatty(STDIN_FILENO))
+				{
+					write(STDOUT_FILENO, "\n", 1);
+				}
 				exit(status);
 			}
-		}  while (status == 0);
-	}*/
+
+	}
 	return (status);
 }
