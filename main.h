@@ -15,9 +15,9 @@ extern char **environ;
 
 void prompt(void);
 char *get_line(void);
-int process(char **tokens);
+int process(char **token, char **av, int path);
 char **str_tok(char *line);
-int main(void);
+int main(int ac, char **av);
 void env(char **environ);
 char *read_stream(void);
 

@@ -2,15 +2,18 @@
 
 /**
  * main - entry point
+ * @av: arguments in the stdin
+ * @ac: numbers of arguments
  *
  * Return: 0 for success.
 */
 
-int main(void)
+int main(int ac, char **av)
 {
 	char *line = NULL;
 	char **tokens;
-	int status = 0;
+	int status = 0, pathnumb = 0;
+	(void)ac;
 
 
 	while (1)
@@ -20,8 +23,9 @@ int main(void)
 			line = get_line();
 			if (line)
 			{
+				pathnumb++;
 				tokens = str_tok(line);
-				status = process(tokens);
+				status = process(tokens, av, pathnumb);
 				free(tokens);
 				free(line);
 				if (status == 45)
