@@ -15,7 +15,7 @@ int process(char **token)
 	{
 		return (1);
 	}
-	if ((strcmp(token[0], "env") == 0) && token[1] == NULL)
+	if ((strcmp(token[0], "env") == 0))
 	{
 		env(environ);
 	}
