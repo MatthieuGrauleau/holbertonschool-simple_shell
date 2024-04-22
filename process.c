@@ -16,6 +16,7 @@ int process(char **token, char **av, int path)
 	int status, built;
 	char *phraze = "%s: %d: %s: not found\n";
 	char *path_env = getenv("PATH");
+	char *paths;
 
 	if (token[0] == NULL)
 	{
@@ -35,25 +36,33 @@ int process(char **token, char **av, int path)
 		{
 			if (path_env != NULL)
 			{
-				char *paths = strtok(path_env, ":");
+				paths = strtok(path_env, ":");
 				while (paths != NULL)
 				{
-					char full_path[PATH_MAX];
-					snprintf(full_path, sizeof(full_path), "%s/%s", paths, token[0]);
+				size_t full_path_len = strlen(paths) + 1 + strlen(token[0]) + 1;
+				      char *full_path = malloc(full_path_len);
+                if (full_path == NULL) {
+                    perror("malloc");
+                    exit(EXIT_FAILURE);
+                }
+                strcpy(full_path, paths);
+                strcat(full_path, "/");
+                strcat(full_path, token[0]);
 					if (access(full_path, X_OK) == 0)
 					{
 						if (execv(full_path, token) == -1)
 						{
-							exit(0);
+							exit(1);
 						}
 					}
 					paths =strtok(NULL, ":");
+					free(full_path);
 				}
 			}
 			
 			fprintf(stderr, phraze, av[0], path, token[0]);
 			free(token);
-			exit(0);
+			exit(1);
 		}
 	}
 
