@@ -35,7 +35,7 @@ Thanks for the contribution and help for this project.
 
 - [[@MatthieuGrauleau](https://github.com/MatthieuGrauleau)]
 - [[@ghinzuka](https://github.com/ghinzuka)]
-- [[@Gliath33](https://github.com/Goliath33)]
+- [[@Goliath33](https://github.com/Goliath33)]
 
 ## COPYRIGHT : 
 
@@ -45,7 +45,7 @@ Copyright (c) [2024]
 
 - [[@MatthieuGrauleau](https://github.com/MatthieuGrauleau)]
 - [[@ghinzuka](https://github.com/ghinzuka)]
-- [[@Gliath33](https://github.com/Goliath33)]
+- [[@Goliath33](https://github.com/Goliath33)]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
