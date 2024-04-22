@@ -19,7 +19,9 @@ char *get_line(void);
 int process(char **token, char **av, int path);
 char **str_tok(char *line);
 int main(int ac, char **av);
-void env(char **environ);
+int env(char **token);
 char *read_stream(void);
+int built_in(char **token);
+int ctrld(char **token);
 
 #endif

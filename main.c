@@ -28,7 +28,7 @@ int main(int ac, char **av)
 				status = process(tokens, av, pathnumb);
 				free(tokens);
 				free(line);
-				if (status == 45)
+				if (status == 42)
 				{
 					return (0);
 				}
