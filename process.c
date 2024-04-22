@@ -15,7 +15,7 @@ int process(char **token, char **av, int path)
 	pid_t pid;
 	int status, built;
 	char *phraze = "%s: %d: %s: not found\n";
-	char *path_env = getenv("PATH");
+	/**char *path_env = getenv("PATH");*/
 
 	if (token[0] == NULL)
 	{
@@ -33,7 +33,7 @@ int process(char **token, char **av, int path)
 	{
 		if (execve(token[0], token, environ) == -1)
 		{
-			if (path_env != NULL)
+			/**if (path_env != NULL)
 			{
 				char *paths = strtok(path_env, ":");
 				while (paths != NULL)
@@ -49,7 +49,7 @@ int process(char **token, char **av, int path)
 					}
 					paths =strtok(NULL, ":");
 				}
-			}
+			}*/
 			
 			fprintf(stderr, phraze, av[0], path, token[0]);
 			free(token);
