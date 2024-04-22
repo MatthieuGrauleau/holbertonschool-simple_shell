@@ -7,36 +7,49 @@
 */
 char **str_tok(char *line)
 {
-	char *token;
-	char **args;
-	int size = 64;
-	int i = 0;
+	char *token = NULL;
+	char **args = NULL;
+	int size = 0;
+	size_t i = 0;
 
-	args = malloc(size * sizeof(char *));
-	if (args == NULL)
+	if (line == NULL)
 	{
-		fprintf(stderr, "problem allocation memory for token \n");
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
+	/**
+	if (line[0] == ' ')
+	{
+		for (i = 0; line[i]; i++)
+		{
+			if (line[i] == ' ')
+			{
+				size++;
+			}
+		}
+	}
+	if ((size + 1) == o_strlen(line))
+	{
+		return (NULL);
+	}*/
 
-	token = strtok(line, " \n");
+	args = malloc((size + 2) * sizeof(char *));
+	if (args == NULL)
+		return (NULL);
 
+	token = strtok(line, " \r\t\n");
 
 	while (token != NULL)
 	{
 		args[i] = token;
 		i++;
-		if (i >= size)
+		/**if (i >= size)
 		{
 			size += size;
 			args = realloc(args, size * sizeof(char *));
 			if (args == NULL)
-			{
-				fprintf(stderr, "problem allocation memory for args \n");
-				exit(EXIT_FAILURE);
-			}
-		}
-		token = strtok(NULL, " \n");
+				return (NULL);
+		}*/
+		token = strtok(NULL, " \t\r\n");
 	}
 
 	args[i] = NULL;
