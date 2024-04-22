@@ -50,7 +50,7 @@ int process(char **token, char **av, int path)
                 strcat(full_path, token[0]);
 					if (access(full_path, X_OK) == 0)
 					{
-						if (execv(full_path, token) == -1)
+						if (execve(full_path, token, environ) == -1)
 						{
 							exit(1);
 						}
