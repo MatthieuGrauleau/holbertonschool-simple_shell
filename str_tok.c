@@ -9,8 +9,8 @@ char **str_tok(char *line)
 {
 	char *token = NULL;
 	char **args = NULL;
-	int size = 0;
-	size_t i = 0;
+	int size = 64;
+	int i = 0;
 
 	if (line == NULL)
 	{
@@ -42,13 +42,13 @@ char **str_tok(char *line)
 	{
 		args[i] = token;
 		i++;
-		/**if (i >= size)
+		if (i >= size)
 		{
 			size += size;
 			args = realloc(args, size * sizeof(char *));
 			if (args == NULL)
 				return (NULL);
-		}*/
+		}
 		token = strtok(NULL, " \t\r\n");
 	}
 
