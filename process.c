@@ -18,9 +18,9 @@ int process(char **token, char **av, int path)
 	{
 		return (1);
 	}
-	if ((strcmp(token[0], "env") == 0))
+	if (built_in(token) != 0)
 	{
-		env(environ);
+		return (built_in(token));
 	}
 
 	pid = fork();
