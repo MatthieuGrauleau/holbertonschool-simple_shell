@@ -8,6 +8,5 @@
 int ctrld(char **token)
 {
 	(void)token;
-	free(token);
 	return (42);
 }

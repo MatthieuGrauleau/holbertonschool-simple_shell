@@ -20,11 +20,17 @@ int main(int ac, char **av)
 	{
 		errno = 0;
 
-			line = get_line();
+		line = get_line();
+		if (line == NULL && errno == 0)
+		{
+			return (0);
+		}
 			if (line)
 			{
 				pathnumb++;
 				tokens = str_tok(line);
+				if(tokens == NULL)
+					free(line);
 				status = process(tokens, av, pathnumb);
 				free(tokens);
 				free(line);

@@ -9,23 +9,16 @@ char *get_line(void)
 {
 	char *line = NULL;
 	size_t line_size = 0;
-	int read;
 
 	if (isatty(STDIN_FILENO))
 	{
 		prompt();
 	}
 
-	read = getline(&line, &line_size, stdin);
-
-	if (read < 0)
+	if (getline(&line, &line_size, stdin) == -1)
 	{
 		free(line);
 		return (NULL);
-	}
-	else if (read == 0)
-	{
-		return (0);
 	}
 	return (line);
 }
