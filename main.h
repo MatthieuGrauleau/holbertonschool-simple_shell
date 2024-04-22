@@ -21,5 +21,6 @@ int main(int ac, char **av);
 int env(char **token);
 char *read_stream(void);
 int built_in(char **token);
+int ctrld(char **token);
 
 #endif

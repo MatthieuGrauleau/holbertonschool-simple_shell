@@ -1,0 +1,13 @@
+#include "main.h"
+/**
+ * ctrld - stop the shell
+ * @token: token from strotk
+ * Return: 42
+*/
+
+int ctrld(char **token)
+{
+	(void)token;
+	free(token);
+	return (42);
+}

@@ -11,16 +11,20 @@
 int process(char **token, char **av, int path)
 {
 	pid_t pid;
-	int status;
+	int status, built;
 	char *phraze = "%s: %d: %s: not found\n";
+
+
 
 	if (token[0] == NULL)
 	{
 		return (1);
 	}
-	if (built_in(token) != 0)
+
+	built = built_in(token);
+	if (built != 0)
 	{
-		return (built_in(token));
+		return (built);
 	}
 
 	pid = fork();

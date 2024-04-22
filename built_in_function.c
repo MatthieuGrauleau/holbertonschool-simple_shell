@@ -9,16 +9,17 @@
 int built_in(char **token)
 {
 	char *builtin_func_list[] = {
-		"env"
+		"env",
+		"^D"
 	};
 	int (*builtin_func[])(char **) = {
-		&env
+		&env,
+		&ctrld
 	};
-	long unsigned int i = 0;
+	unsigned long int i = 0;
 
 	for (; i < sizeof(builtin_func_list) / sizeof(char *); i++)
 	{
-		
 		if (strcmp(token[0], builtin_func_list[i]) == 0)
 		{
 			return ((*builtin_func[i])(token));
