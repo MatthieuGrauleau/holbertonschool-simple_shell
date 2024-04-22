@@ -1,5 +1,7 @@
 #include "main.h"
 
+#define PATH_MAX 4096
+
 /**
  * process - function that process.
  *
@@ -13,6 +15,7 @@ int process(char **token, char **av, int path)
 	pid_t pid;
 	int status;
 	char *phraze = "%s: %d: %s: not found\n";
+	char *path_env = getenv("PATH");
 
 	if (token[0] == NULL)
 	{
@@ -29,6 +32,24 @@ int process(char **token, char **av, int path)
 	{
 		if (execve(token[0], token, environ) == -1)
 		{
+			if (path_env != NULL)
+			{
+				char *paths = strtok(path_env, ":");
+				while (paths != NULL)
+				{
+					char full_path[PATH_MAX];
+					snprintf(full_path, sizeof(full_path), "%s/%s", paths, token[0]);
+					if (access(full_path, X_OK) == 0)
+					{
+						if (execv(full_path, token) == -1)
+						{
+							perror("execv");
+						}
+					}
+					paths =strtok(NULL, ":");
+				}
+			}
+			
 			fprintf(stderr, phraze, av[0], path, token[0]);
 			free(token);
 			exit(errno);
