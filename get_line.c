@@ -11,17 +11,21 @@ char *get_line(void)
 	size_t line_size = 0;
 	int read;
 
+	if (isatty(STDIN_FILENO))
+	{
+		prompt();
+	}
+
 	read = getline(&line, &line_size, stdin);
 
-	if (read == 0)
+	if (read < 0)
 	{
 		free(line);
-		exit(EXIT_SUCCESS);
+		return (NULL);
 	}
-	else if (read < 0)
+	else if (read == 0)
 	{
-		free(line);
-		exit(EXIT_FAILURE);
+		return (0);
 	}
 	return (line);
 }

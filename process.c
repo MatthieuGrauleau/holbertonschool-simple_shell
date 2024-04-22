@@ -4,40 +4,41 @@
  * process - function that process.
  *
  * @token: pointer to an array of string from str_tok.
+ * @av: name of prorgam to print in stdou
+ * @path: ID of program to print in stdou
  * Return: 0;
 */
-int process(char **token)
+int process(char **token, char **av, int path)
 {
 	pid_t pid;
+	int status;
+	char *phraze = "%s: %d: %s: not found\n";
 
-	if (token == NULL)
+	if (token[0] == NULL)
 	{
-		return (0);
+		return (1);
 	}
-	if ((strcmp(token[0], "env") == 0) && token[1] == NULL)
+	if ((strcmp(token[0], "env") == 0))
 	{
 		env(environ);
 	}
 
 	pid = fork();
 
-	if (pid < 0)
-	{
-		perror("fork");
-	}
-
-	else if (pid == 0)
+	if (pid == 0)
 	{
 		if (execve(token[0], token, environ) == -1)
 		{
-			perror("./hsh");
+			fprintf(stderr, phraze, av[0], path, token[0]);
+			free(token);
+			exit(errno);
 		}
-		exit(EXIT_FAILURE);
 	}
-	
+
 	else
 	{
-		waitpid(pid, NULL, 0);
+		wait(&status);
+		return (status);
 	}
 	return (0);
 }

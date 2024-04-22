@@ -2,46 +2,46 @@
 
 /**
  * main - entry point
+ * @av: arguments in the stdin
+ * @ac: numbers of arguments
  *
  * Return: 0 for success.
 */
 
-int main(void)
+int main(int ac, char **av)
 {
-	char *line;
+	char *line = NULL;
 	char **tokens;
-	int status = 0;
+	int status = 0, pathnumb = 0;
+	(void)ac;
 
-	if (isatty(STDIN_FILENO) == 1)
+
+	while (1)
 	{
-		while (1)
-		{
-			prompt();
+		errno = 0;
+
 			line = get_line();
-			tokens = str_tok(line);
-			process(tokens);
-			free(line);
-			if (status > 0)
+			if (line)
 			{
+				pathnumb++;
+				tokens = str_tok(line);
+				status = process(tokens, av, pathnumb);
+				free(tokens);
+				free(line);
+				if (status == 45)
+				{
+					return (0);
+				}
+			}
+			else
+			{
+				if (isatty(STDIN_FILENO))
+				{
+					write(STDOUT_FILENO, "\n", 1);
+				}
 				exit(status);
 			}
-		}  while (status == 0);
 
 	}
-	else
-	{
-		do
-		{
-			line = get_line();
-			tokens = str_tok(line);
-			status = process(tokens);
-			free(tokens);
-			free(line);
-			if (status > 0)
-			{
-				exit(status);
-			}
-		}  while (status == 0);
-	}
-	return (0);
+	return (status);
 }
