@@ -13,7 +13,7 @@
 int process(char **token, char **av, int path)
 {
 	pid_t pid;
-	int status;
+	int status, built;
 	char *phraze = "%s: %d: %s: not found\n";
 	char *path_env = getenv("PATH");
 
@@ -21,9 +21,10 @@ int process(char **token, char **av, int path)
 	{
 		return (1);
 	}
-	if ((strcmp(token[0], "env") == 0))
+	built = built_in(token);
+	if (built != 0)
 	{
-		env(environ);
+		return (built);
 	}
 
 	pid = fork();

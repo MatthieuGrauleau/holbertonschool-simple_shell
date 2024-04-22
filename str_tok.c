@@ -42,13 +42,13 @@ char **str_tok(char *line)
 	{
 		args[i] = token;
 		i++;
-		if (i >= size)
+		/**if (i >= size)
 		{
 			size += size;
 			args = realloc(args, size * sizeof(char *));
 			if (args == NULL)
 				return (NULL);
-		}
+		}*/
 		token = strtok(NULL, " \t\r\n");
 	}
 
