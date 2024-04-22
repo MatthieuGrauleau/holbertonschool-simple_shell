@@ -23,7 +23,7 @@ int main(int ac, char **av)
 		line = get_line();
 		if (line == NULL && errno == 0)
 		{
-			return (0);
+			exit (1);
 		}
 			if (line)
 			{
@@ -36,7 +36,7 @@ int main(int ac, char **av)
 				free(line);
 				if (status == 42)
 				{
-					return (0);
+					exit(0);
 				}
 			}
 			else
@@ -49,5 +49,5 @@ int main(int ac, char **av)
 			}
 
 	}
-	return (status);
+	exit (status);
 }
