@@ -20,6 +20,7 @@ int process(char **token, char **av, int path);
 char **str_tok(char *line);
 int main(int ac, char **av);
 int built_in(char **token);
+void handle_path(char **token, char **av, int path);
 
 /*built in function*/
 int env(char **token);
