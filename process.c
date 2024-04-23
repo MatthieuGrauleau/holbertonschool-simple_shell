@@ -34,50 +34,47 @@ int process(char **token, char **av, int path)
         }
         env++;
     }
-
-    if (paths != NULL)
+    pid = fork();
+    if (pid == 0)
     {
-        paths = strtok(paths, ":");
-        while (paths != NULL)
+        if (execve(token[0], token, environ) == -1)
         {
-            size_t full_path_len = strlen(paths) + 1 + strlen(token[0]) + 1;
-            char *full_path = malloc(full_path_len);
-            if (full_path == NULL)
+            if (paths != NULL)
             {
-				free(full_path);
-                exit(1);
-            }
-            strcpy(full_path, paths);
-            strcat(full_path, "/");
-            strcat(full_path, token[0]);
-            if (access(full_path, X_OK) == 0)
-            {
-                pid = fork();
-                if (pid == 0)
+                paths = strtok(paths, ":");
+                while (paths != NULL)
                 {
-                    if (execve(full_path, token, environ) == -1)
+                    char *full_path = malloc(strlen(paths) + 1 + strlen(token[0]) + 1);
+                    if (full_path == NULL)
                     {
 						free(full_path);
                         exit(1);
                     }
-                }
-                else if (pid < 0)
-                {
-					free(full_path);
-                    exit(1);
-                }
-                else
-                {
-                    wait(&status);
-                    return (status);
+                    strcpy(full_path, paths);
+                    strcat(full_path, "/");
+                    strcat(full_path, token[0]);
+                    if (access(full_path, X_OK) == 0)
+                    {
+                        if (execve(full_path, token, environ) == -1)
+                        {
+							free(full_path);
+                            exit(1);
+                        }
+                    }
+                    paths = strtok(NULL, ":");
+                    free(full_path);
                 }
             }
-            free(full_path);
-            paths = strtok(NULL, ":");
+
+            fprintf(stderr, phraze, av[0], path, token[0]);
+            free(token);
+            exit(1);
         }
     }
-
-    fprintf(stderr, phraze, av[0], path, token[0]);
-    free(token);
-    return (1);
+    else
+    {
+        wait(&status);
+        return (status);
+    }
+    return (0);
 }
