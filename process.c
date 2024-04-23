@@ -20,6 +20,7 @@ int process(char **token, char **av, int path)
     {
         return (0);
     }
+    
     built = built_in(token);
     if (built != 0)
     {
