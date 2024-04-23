@@ -43,7 +43,7 @@ int process(char **token, char **av, int path)
 				      char *full_path = malloc(full_path_len);
                 if (full_path == NULL) {
                     perror("malloc");
-                    exit(EXIT_FAILURE);
+                    exit(1);
                 }
                 strcpy(full_path, paths);
                 strcat(full_path, "/");
