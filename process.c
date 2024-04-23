@@ -69,7 +69,7 @@ int process(char **token, char **av, int path)
 			
             } else
 			{
-					exit(127);
+				exit(127);
 			}
 
             fprintf(stderr, phraze, av[0], path, token[0]);

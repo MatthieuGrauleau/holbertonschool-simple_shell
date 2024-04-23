@@ -25,6 +25,6 @@ int built_in(char **token);
 int env(char **token);
 int ctrld(char **token);
 int own_exit(char **token);
-int o_strlen (char *line);
+int o_strlen(char *line);
 
 #endif

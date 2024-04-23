@@ -16,7 +16,7 @@ char **str_tok(char *line)
 	{
 		return (NULL);
 	}
-	
+
 	args = malloc((size + 2) * sizeof(char *));
 	if (args == NULL)
 		return (NULL);

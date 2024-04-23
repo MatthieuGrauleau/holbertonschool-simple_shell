@@ -28,7 +28,7 @@ int main(int ac, char **av)
 			{
 				pathnumb++;
 				tokens = str_tok(line);
-				if(tokens == NULL)
+				if (tokens == NULL)
 					free(line);
 				status = process(tokens, av, pathnumb);
 				free(tokens);
