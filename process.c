@@ -44,7 +44,7 @@ int process(char **token, char **av, int path)
             char *full_path = malloc(full_path_len);
             if (full_path == NULL)
             {
-                perror("malloc");
+				free(full_path);
                 exit(1);
             }
             strcpy(full_path, paths);
@@ -57,12 +57,13 @@ int process(char **token, char **av, int path)
                 {
                     if (execve(full_path, token, environ) == -1)
                     {
+						free(full_path);
                         exit(1);
                     }
                 }
                 else if (pid < 0)
                 {
-                    perror("fork");
+					free(full_path);
                     exit(1);
                 }
                 else
