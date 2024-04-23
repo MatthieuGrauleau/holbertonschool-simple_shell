@@ -47,10 +47,10 @@ int process(char **token, char **av, int path)
                 paths = strtok(paths, ":");
                 while (paths != NULL)
                 {
-                    size_t full_path_len = strlen(paths) + 1 + strlen(token[0]) + 1;
-                    char *full_path = malloc(full_path_len);
+                    char *full_path = malloc(strlen(paths) + 1 + strlen(token[0]) + 1);
                     if (full_path == NULL)
                     {
+						free(full_path);
                         exit(1);
                     }
                     strcpy(full_path, paths);
@@ -60,6 +60,7 @@ int process(char **token, char **av, int path)
                     {
                         if (execve(full_path, token, environ) == -1)
                         {
+							free(full_path);
                             exit(1);
                         }
                     }
