@@ -18,12 +18,15 @@ You can only used this commands in the simple shell and you find here command PO
 |  Command  | Definition                                             |
 |----------:|--------------------------------------------------------|
 |    ls     | List the files in the current directory.               |
-|    cd     | Move in to a directory (ex ```cd ..``` you return).    |
+|    cp     | copy a file or Directory(ex ```cp test```).            |
 |    mv     | Move a file and or rename (ex ```mv file1 file2```).   |
 |    rm     | Delete a file or repertory (ex ```rm -R \Folder```)    |
 |    pwd    | Print working directory                                |
 |    env    | Print the environment system and give informations     |
 |    exit   | Exit the Shell                                         |
+
+># Exemple in the shell : 
+![Exemple_shell](https://github.com/MatthieuGrauleau/holbertonschool-simple_shell/blob/david/img/screenshot_shell.png)
 
 ## :bar_chart: FLOWCHART :
 ![FLOWCHART](https://github.com/MatthieuGrauleau/holbertonschool-simple_shell/blob/david/img/flowchart_simpleshell.png)
