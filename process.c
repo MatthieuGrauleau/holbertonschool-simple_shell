@@ -66,11 +66,10 @@ int process(char **token, char **av, int path)
                     paths = strtok(NULL, ":");
                     free(full_path);
                 }
-			
-            } else
-			{
+				fprintf(stderr, phraze, av[0], path, token[0]);
+				free(token);
 				exit(127);
-			}
+            }
 
             fprintf(stderr, phraze, av[0], path, token[0]);
             free(token);
