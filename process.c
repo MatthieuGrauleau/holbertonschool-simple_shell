@@ -1,7 +1,5 @@
 #include "main.h"
 
-#define PATH_MAX 4096
-
 /**
  * process - function that process.
  *
@@ -42,7 +40,6 @@ int process(char **token, char **av, int path)
 				size_t full_path_len = strlen(paths) + 1 + strlen(token[0]) + 1;
 				      char *full_path = malloc(full_path_len);
                 if (full_path == NULL) {
-                    perror("malloc");
                     exit(1);
                 }
                 strcpy(full_path, paths);
