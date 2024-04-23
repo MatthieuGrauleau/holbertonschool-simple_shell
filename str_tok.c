@@ -16,22 +16,7 @@ char **str_tok(char *line)
 	{
 		return (NULL);
 	}
-	/**
-	if (line[0] == ' ')
-	{
-		for (i = 0; line[i]; i++)
-		{
-			if (line[i] == ' ')
-			{
-				size++;
-			}
-		}
-	}
-	if ((size + 1) == o_strlen(line))
-	{
-		return (NULL);
-	}*/
-
+	
 	args = malloc((size + 2) * sizeof(char *));
 	if (args == NULL)
 		return (NULL);
