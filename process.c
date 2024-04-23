@@ -20,6 +20,7 @@ int process(char **token, char **av, int path)
     {
         return (0);
     }
+    
     built = built_in(token);
     if (built != 0)
     {
@@ -69,7 +70,7 @@ int process(char **token, char **av, int path)
 
             fprintf(stderr, phraze, av[0], path, token[0]);
             free(token);
-            exit(1);
+            exit(127);
         }
     }
     else

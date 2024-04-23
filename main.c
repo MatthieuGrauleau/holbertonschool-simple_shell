@@ -15,7 +15,6 @@ int main(int ac, char **av)
 	int status = 0, pathnumb = 0;
 	(void)ac;
 
-
 	while (1)
 	{
 		errno = 0;
@@ -29,7 +28,7 @@ int main(int ac, char **av)
 			{
 				pathnumb++;
 				tokens = str_tok(line);
-				if(tokens == NULL)
+				if (tokens == NULL)
 					free(line);
 				status = process(tokens, av, pathnumb);
 				free(tokens);
