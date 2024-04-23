@@ -12,6 +12,7 @@ int process(char **token, char **av, int path) {
     if (built != 0) {
         return built;
     }
+	
     handle_path(token, av, path);
 
     pid = fork();
