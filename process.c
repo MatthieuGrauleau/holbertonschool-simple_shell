@@ -8,13 +8,12 @@
  * @path: ID of program to print in stdou
  * Return: 0;
  */
-int process(char **token, char **av, int path)
+int process(char **token, char **av, int path, int c)
 {
     pid_t pid;
     int status, built;
     char *phraze = "%s: %d: %s: not found\n";
-    char **env = environ;
-    char *paths = NULL;
+    
 
     if (token[0] == NULL)
     {
@@ -26,49 +25,16 @@ int process(char **token, char **av, int path)
         return (built);
     }
 
-    while (*env != NULL)
-    {
-        if (strncmp(*env, "PATH=", 5) == 0)
-        {
-            paths = *env + 5;
-            break;
-        }
-        env++;
-    }
-
     pid = fork();
 
     if (pid == 0)
+	
     {
         if (execve(token[0], token, environ) == -1)
         {
-            if (paths != NULL)
-            {
-                paths = strtok(paths, ":");
-                while (paths != NULL)
-                {
-                    size_t full_path_len = strlen(paths) + 1 + strlen(token[0]) + 1;
-                    char *full_path = malloc(full_path_len);
-                    if (full_path == NULL)
-                    {
-                        exit(1);
-                    }
-                    strcpy(full_path, paths);
-                    strcat(full_path, "/");
-                    strcat(full_path, token[0]);
-                    if (access(full_path, X_OK) == 0)
-                    {
-                        if (execve(full_path, token, environ) == -1)
-                        {
-                            exit(1);
-                        }
-                    }
-                    paths = strtok(NULL, ":");
-                    free(full_path);
-                }
-            }
-
             fprintf(stderr, phraze, av[0], path, token[0]);
+            if (!c)
+				free(token[0]);
             free(token);
             exit(1);
         }

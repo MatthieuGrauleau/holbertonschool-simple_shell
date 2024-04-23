@@ -16,10 +16,11 @@ extern char **environ;
 
 void prompt(void);
 char *get_line(void);
-int process(char **token, char **av, int path);
+int process(char **token, char **av, int path, int c);
 char **str_tok(char *line);
-int main(int ac, char **av);
+int main(int ac, char **av, char **env);
 int built_in(char **token);
+int values_path(char **tokens, char **env);
 
 /*built in function*/
 int env(char **token);

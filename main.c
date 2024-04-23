@@ -8,11 +8,11 @@
  * Return: 0 for success.
 */
 
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
 	char *line = NULL;
 	char **tokens;
-	int status = 0, pathnumb = 0;
+	int status = 0, pathnumb = 0, path = 0;
 	(void)ac;
 
 
@@ -31,13 +31,14 @@ int main(int ac, char **av)
 				tokens = str_tok(line);
 				if(tokens == NULL)
 					free(line);
-				status = process(tokens, av, pathnumb);
-				free(tokens);
+				path = values_path(&tokens[0], env);
+				status = process(tokens, av, pathnumb, path);
 				free(line);
 				if (status == 42)
 				{
 					exit(0);
 				}
+				free(tokens);
 			}
 			else
 			{
