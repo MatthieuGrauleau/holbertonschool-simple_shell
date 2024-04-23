@@ -35,7 +35,9 @@ int process(char **token, char **av, int path)
         env++;
     }
     pid = fork();
+
     if (pid == 0)
+	
     {
         if (execve(token[0], token, environ) == -1)
         {
