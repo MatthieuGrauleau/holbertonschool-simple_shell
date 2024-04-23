@@ -6,6 +6,6 @@
 */
 int own_exit(char **token)
 {
-	(void)token;
+	(void)(**token);
 	return (42);
 }
