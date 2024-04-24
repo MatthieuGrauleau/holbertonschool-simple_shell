@@ -26,6 +26,5 @@ int handle_path(char **token, char *phraze, char **av, int path);
 int env(char **token);
 int ctrld(char **token);
 int own_exit(char **token);
-int cd(char **token);
 
 #endif
