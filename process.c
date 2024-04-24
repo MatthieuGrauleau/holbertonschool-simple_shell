@@ -40,8 +40,6 @@ int process(char **token, char **av, int path)
     pid = fork();
     if (pid == 0)
     {
-        if (execve(token[0], token, environ) == -1)
-        {
             if (paths != NULL)
             {
                 paths = strtok(paths, ":");
@@ -72,7 +70,6 @@ int process(char **token, char **av, int path)
             fprintf(stderr, phraze, av[0], path, token[0]);
             free(token);
             exit(127);
-        }
     }
     else
     {
