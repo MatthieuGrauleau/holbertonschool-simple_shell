@@ -11,8 +11,8 @@ extern char **environ;
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <errno.h>
 #include <limits.h>
+#include <errno.h>
 
 void prompt(void);
 char *get_line(void);
@@ -26,6 +26,5 @@ int handle_path(char **token, char *phraze, char **av, int path);
 int env(char **token);
 int ctrld(char **token);
 int own_exit(char **token);
-int o_strlen(char *line);
 
 #endif

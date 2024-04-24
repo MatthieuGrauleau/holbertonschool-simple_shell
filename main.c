@@ -13,11 +13,11 @@ int main(int ac, char **av)
 	char **tokens;
 	int status = 0, pathnumb = 0;
 	(void)ac;
+	
 
 	while (1)
 	{
 		errno = 0;
-
 		line = get_line();
 		if (line == NULL && errno == 0)
 		{
@@ -45,7 +45,6 @@ int main(int ac, char **av)
 				}
 				exit(status);
 			}
-
 	}
 	exit(status);
 }

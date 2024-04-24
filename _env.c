@@ -6,13 +6,13 @@
 */
 int env(char **token)
 {
-	size_t i = 0;
+	int i = 0;
 
 	if (*token)
 	{
 		while (environ[i])
 		{
-			write(STDOUT_FILENO, environ[i], o_strlen(environ[i]));
+			write(STDOUT_FILENO, environ[i], strlen(environ[i]));
 			write(STDOUT_FILENO, "\n", 1);
 			i++;
 		}
