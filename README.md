@@ -86,32 +86,36 @@ You can only used this commands in the simple shell and you find here command PO
 ![Exemple_shell](https://github.com/MatthieuGrauleau/holbertonschool-simple_shell/blob/david/img/screenshot_shell.png)
 
 ### commands in shell :
-- ls
->```$ ./hsh```
->```$ ls```
->```AUTHORS    _ctrl_d.c  _exit.c    built_in_function.c  hsh  main.c  man_1_simple_shell  prompt.c    str_tok.c```
->```README.md  _env.c     _strlen.c  get_line.c           img  main.h  process.c           readline.c```
 
-- env
->```$ ./hsh```
->```$ env```
->```SHELL=/bin/bash```
->```PWD=/root/holbertonschool-simple_shell```
->```LOGNAME=root```
->```MOTD_SHOWN=pam```
->```HOME=/root```
->```LESSCLOSE=/usr/bin/lesspipe %s %s```
->```TERM=xterm```
->```LESSOPEN=| /usr/bin/lesspipe %s```
->```USER=root```
->```SHLVL=1```
->```SSH_CLIENT=10.43.223.216 36764 22```
->```DEBUGINFOD_URLS=```
->```PATH=/usr/local/sbin```
->```SSH_TTY=/dev/pts/0```
->```_=./hsh```
->```OLDPWD=/root```
+- ls (RESULTED)
+```
+$ ./hsh
+$ ls
+AUTHORS    _ctrl_d.c  _exit.c    built_in_function.c  hsh  main.c  man_1_simple_shell  prompt.c    str_tok.c
+README.md  _env.c     _strlen.c  get_line.c           img  main.h  process.c           readline.c
+```
 
+- env (RESULTED)
+```
+$./hsh
+$ env
+SHELL=/bin/bash
+PWD=/root/holbertonschool-simple_shell
+LOGNAME=root
+MOTD_SHOWN=pam
+HOME=/root
+LESSCLOSE=/usr/bin/lesspipe %s %s
+TERM=xterm
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=root
+SHLVL=1
+SSH_CLIENT=10.43.223.216 36764 22
+DEBUGINFOD_URLS=
+PATH=/usr/local/sbin
+SSH_TTY=/dev/pts/0
+_=./hsh
+OLDPWD=/root
+```
 ETC...
 
 # :bar_chart: FLOWCHART :
