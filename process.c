@@ -28,7 +28,6 @@ int process(char **token, char **av, int path)
     }
     if (access(token[0], X_OK) == 0)
     {
-        /* Execute the command directly (no need for PATH) */
         if (execve(token[0], token, environ) == -1)
         {
             perror("execve");
