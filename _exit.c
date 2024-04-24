@@ -7,9 +7,6 @@
 
 int own_exit(char **token)
 {
-	if (*token)
-	{
-	exit(2);
-	}
-return (0);
+	(void)token;
+	return (42);
 }

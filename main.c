@@ -17,10 +17,8 @@ int main(int ac, char **av)
 
 	while (1)
 	{
-		errno = 0;
-
 		line = get_line();
-		if (line == NULL && errno == 0)
+		if (line == NULL)
 		{
 			exit(1);
 		}
