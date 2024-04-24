@@ -15,11 +15,10 @@ int process(char **token, char **av, int path)
     char *phraze = "%s: %d: %s: not found\n";
     char **env = environ;
     char *paths = NULL;
-    struct stat st;
 
     if (token[0] == NULL)
     {
-        return (0);
+        exit(1);
     }
     
     built = built_in(token);
@@ -27,19 +26,28 @@ int process(char **token, char **av, int path)
     {
         return (built);
     }
-
-    while (*env != NULL)
+    if (access(token[0], X_OK) == 0)
     {
-        if (strncmp(*env, "PATH=", 5) == 0)
+        if (execve(token[0], token, environ) == -1)
         {
-            paths = *env + 5;
-            break;
+            perror("execve");
+           exit(1);
         }
-        env++;
     }
-    pid = fork();
-    if (pid == 0)
-    {
+    else
+    { 
+        pid = fork();
+        if (pid == 0)
+        {
+            while (*env != NULL)
+            {
+                if (strncmp(*env, "PATH=", 5) == 0)
+                {
+                    paths = *env + 5;
+                    break;
+                }
+                env++;
+            }
             if (paths != NULL)
             {
                 paths = strtok(paths, ":");
@@ -48,18 +56,18 @@ int process(char **token, char **av, int path)
                     char *full_path = malloc(strlen(paths) + 1 + strlen(token[0]) + 1);
                     if (full_path == NULL)
                     {
-						free(full_path);
+                        free(full_path);
                         exit(1);
                     }
                     strcpy(full_path, paths);
                     strcat(full_path, "/");
                     strcat(full_path, token[0]);
-                    if (stat(full_path, &st) == 0)
+                    if (access(full_path, X_OK) == 0)
                     {
                         if (execve(full_path, token, environ) == -1)
                         {
-							free(full_path);
-                            exit(127);
+                            free(full_path);
+                            exit(1);
                         }
                     }
                     paths = strtok(NULL, ":");
@@ -70,11 +78,12 @@ int process(char **token, char **av, int path)
             fprintf(stderr, phraze, av[0], path, token[0]);
             free(token);
             exit(127);
-    }
-    else
-    {
-        wait(&status);
-        return (status);
+        }
+        else
+        {
+            wait(&status);
+            return (status);
+        }
     }
     return (0);
 }
