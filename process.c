@@ -15,6 +15,7 @@ int process(char **token, char **av, int path)
     char *phraze = "%s: %d: %s: not found\n";
     char **env = environ;
     char *paths = NULL;
+    struct stat st;
 
     if (token[0] == NULL)
     {
@@ -55,12 +56,12 @@ int process(char **token, char **av, int path)
                     strcpy(full_path, paths);
                     strcat(full_path, "/");
                     strcat(full_path, token[0]);
-                    if (access(full_path, X_OK) == 0)
+                    if (stat(full_path, &st) == 0)
                     {
                         if (execve(full_path, token, environ) == -1)
                         {
 							free(full_path);
-                            exit(1);
+                            exit(127);
                         }
                     }
                     paths = strtok(NULL, ":");
