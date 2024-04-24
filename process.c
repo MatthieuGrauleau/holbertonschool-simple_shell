@@ -31,7 +31,7 @@ int process(char **token, char **av, int path)
         if (execve(token[0], token, environ) == -1)
         {
             perror("execve");
-           exit(127);
+           exit(1);
         }
     }
     else
@@ -67,7 +67,7 @@ int process(char **token, char **av, int path)
                         if (execve(full_path, token, environ) == -1)
                         {
                             free(full_path);
-                            exit(127);
+                            exit(1);
                         }
                     }
                     paths = strtok(NULL, ":");
