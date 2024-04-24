@@ -35,12 +35,15 @@ int process(char **token, char **av, int path)
             break;
         }
         env++;
+    } 
+    if (access(token[0], X_OK) == -1) 
+    {
+            fprintf(stderr, phraze, token[0], getpid(), token[0]);
+            exit (127);
     }
     pid = fork();
     if (pid == 0)
     {
-        if (execve(token[0], token, environ) == -1)
-        {
             if (paths != NULL)
             {
                 paths = strtok(paths, ":");
@@ -60,18 +63,23 @@ int process(char **token, char **av, int path)
                         if (execve(full_path, token, environ) == -1)
                         {
 							free(full_path);
-                            exit(1);
+                            exit(127);
                         }
                     }
                     paths = strtok(NULL, ":");
                     free(full_path);
                 }
             }
-
+            else
+            {
+                if (execve(token[0], token, environ) == -1)
+                {
+                    exit(1);
+                }
+            }
             fprintf(stderr, phraze, av[0], path, token[0]);
             free(token);
             exit(1);
-        }
     }
     else
     {
