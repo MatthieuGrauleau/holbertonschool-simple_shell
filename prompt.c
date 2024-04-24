@@ -1,9 +1,10 @@
-#include "main.h"
-
+#include "shell.h"
 /**
- * prompt - function that creates the prompt
-*/
+ * prompt - function to print prompt
+ * Return: void
+ */
 void prompt(void)
 {
+	if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "$ ", 2);
 }
