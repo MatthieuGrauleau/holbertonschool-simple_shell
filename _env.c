@@ -10,12 +10,10 @@ int env(char **token)
 
 	if (*token)
 	{
-		while (environ[i])
-		{
-			write(STDOUT_FILENO, environ[i], strlen(environ[i]));
-			write(STDOUT_FILENO, "\n", 1);
-			i++;
-		}
+	while (environ[i] != NULL) {
+        printf("%s\n", environ[i]);
+        i++;
+    }
 	}
 	return (0);
 }

@@ -7,6 +7,14 @@
 
 int own_exit(char **token)
 {
-	(void)token;
-	return (42);
+	/* exit with status */
+	if (token[1])
+	{
+		return (atoi(token[1]));
+	}
+	/* exit success */
+	else
+	{
+		return (42);
+	}
 }

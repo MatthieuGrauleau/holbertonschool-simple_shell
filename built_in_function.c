@@ -11,7 +11,7 @@ int built_in(char **token)
 	char *builtin_func_list[] = {
 		"env",
 		"exit",
-		"^D",
+		"^D"
 	};
 	int (*builtin_func[])(char **) = {
 		&env,

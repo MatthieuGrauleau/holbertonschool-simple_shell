@@ -46,7 +46,6 @@ int main(int ac, char **av)
 				}
 				exit(status);
 			}
-
 	}
 	exit(status);
 }
