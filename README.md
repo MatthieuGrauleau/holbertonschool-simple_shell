@@ -37,8 +37,7 @@ To compile your code, you should use the following command:
 - Write a beautiful code that passes the Betty checks.
 
 > 2. Simple shell 0.1
-- Write a UNIX command line interpreter.
-*   
+- Write a UNIX command line interpreter.  
 - Display a prompt and wait for the user to type a command. A command line always ends with a new line.
 - The prompt is displayed again each time a command has been executed.
 - The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
@@ -88,30 +87,30 @@ You can only used this commands in the simple shell and you find here command PO
 
 ### commands in shell :
 - ls
-```$ ./hsh```
-```$ ls```
-```AUTHORS    _ctrl_d.c  _exit.c    built_in_function.c  hsh  main.c  man_1_simple_shell  prompt.c    str_tok.c```
-```README.md  _env.c     _strlen.c  get_line.c           img  main.h  process.c           readline.c```
+>```$ ./hsh```
+>```$ ls```
+>```AUTHORS    _ctrl_d.c  _exit.c    built_in_function.c  hsh  main.c  man_1_simple_shell  prompt.c    str_tok.c```
+>```README.md  _env.c     _strlen.c  get_line.c           img  main.h  process.c           readline.c```
 
 - env
-```$ ./hsh```
-```$ env```
-```SHELL=/bin/bash```
-```PWD=/root/holbertonschool-simple_shell```
-```LOGNAME=root```
-```MOTD_SHOWN=pam```
-```HOME=/root```
-```LESSCLOSE=/usr/bin/lesspipe %s %s```
-```TERM=xterm```
-```LESSOPEN=| /usr/bin/lesspipe %s```
-```USER=root```
-```SHLVL=1```
-```SSH_CLIENT=10.43.223.216 36764 22```
-```DEBUGINFOD_URLS=```
-```PATH=/usr/local/sbin```
-```SSH_TTY=/dev/pts/0```
-```_=./hsh```
-```OLDPWD=/root```
+>```$ ./hsh```
+>```$ env```
+>```SHELL=/bin/bash```
+>```PWD=/root/holbertonschool-simple_shell```
+>```LOGNAME=root```
+>```MOTD_SHOWN=pam```
+>```HOME=/root```
+>```LESSCLOSE=/usr/bin/lesspipe %s %s```
+>```TERM=xterm```
+>```LESSOPEN=| /usr/bin/lesspipe %s```
+>```USER=root```
+>```SHLVL=1```
+>```SSH_CLIENT=10.43.223.216 36764 22```
+>```DEBUGINFOD_URLS=```
+>```PATH=/usr/local/sbin```
+>```SSH_TTY=/dev/pts/0```
+>```_=./hsh```
+>```OLDPWD=/root```
 
 ETC...
 
