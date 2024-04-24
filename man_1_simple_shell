@@ -10,33 +10,43 @@ ______________     __________________   ________________________________________
 |  _  |!_   _!     |     ||  |  ||  !___|  _  ||  __|_|  _ \   7  7  |  |  ||  7  |
 |  7  | 7   7      |  7  ||  !  ||     7|  7  ||     7|  7  |  |  |  |  !  ||  |  |
 !_____! !___!      !__!__!!_____!!_____!!_____!!_____!!__!__!  !__!  !_____!!__!__!
-.TH SIMPLE SHELL  "April 20, 2024" "version 0.1" "USER COMMANDS"
+.TH SIMPLE SHELL 1 "April 20, 2024" "version 0.1" "Simple Shell Manual"
 .SH NAME
-simple shell \- its shell basic developed by student for holberton
+simple shell \- Simple interactive shell developed by students for Holberton
+.SH SYNOPSIS
+simple_shell
 .SH DESCRIPTION
-It's exercice of development by holberton for developing basic shell
+simple shell is a simple interactive shell developed as an exercise by students at Holberton School. It allows the user to enter commands and execute them.
 
-.PP
-simple shell
-.SH OPTIONS
+When simple shell is executed, it displays a command prompt "$ " and waits for the user to enter a command. Once the command is entered, simple shell processes and executes it.
+
+simple shell also supports some built-in commands to provide additional functionality.
+
+.SH COMMANDS
+simple shell supports the following commands:
 .TP
-\-h
-Display a short help simple shell
+.B env
+Display the currently set environment variables.
+.TP
+.B exit
+Exit the shell. If an exit code is specified, the shell exits with that code.
+.TP
+.B ^D
+Allows quitting the shell by pressing Ctrl+D.
 .SH EXAMPLES
 .TP
-\cd ..
-Move preceded folder 
+pwd
+Print the working directory
 .TP
-\ls
-List and display the files in folder
-.PP
-.TP
-.PP
+ls
+List and display files in the directory.
 .SH EXIT STATUS
-If you write "exit" you leave the simple shell or press on keyboard Ctrl+c 
-you leave the environement
+If you type "exit", you exit the simple shell. Or if you press Ctrl+D, you exit the shell with exit status 0.
 .SH AUTHOR
-- Matthieu Grauleau <m.grauleau@gmail.com>
-- Baptiste Pouquerou <baptiste.pouquerou@gmail.com>
-- David Sellier De Brugiere <gauliath@msn.com>
-.SH SEE ALSO
+simple shell was developed by:
+.TP
+Matthieu Grauleau <m.grauleau@gmail.com>
+Baptiste Pouquerou <baptiste.pouquerou@gmail.com>
+David Sellier De Brugiere <gauliath@msn.com>
+.SH REPORTING BUGS
+Bugs in simple shell can be reported by emailing any of the authors listed above.
