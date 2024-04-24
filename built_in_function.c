@@ -11,12 +11,14 @@ int built_in(char **token)
 	char *builtin_func_list[] = {
 		"env",
 		"exit",
-		"^D"
+		"^D",
+		"cd"
 	};
 	int (*builtin_func[])(char **) = {
 		&env,
 		&own_exit,
-		&ctrld
+		&ctrld,
+		&cd
 	};
 	unsigned long int i = 0;
 
