@@ -8,13 +8,12 @@
  * Return: 0 for success.
 */
 
-int main(int ac, char **av, char **env)
+int main(int ac, char **av)
 {
 	char *line = NULL;
 	char **tokens;
-	int status = 0, pathnumb = 0, path = 0;
+	int status = 0, pathnumb = 0;
 	(void)ac;
-
 
 	while (1)
 	{
@@ -29,16 +28,15 @@ int main(int ac, char **av, char **env)
 			{
 				pathnumb++;
 				tokens = str_tok(line);
-				if(tokens == NULL)
+				if (tokens == NULL)
 					free(line);
-				path = values_path(&tokens[0], env);
-				status = process(tokens, av, pathnumb, path);
+				status = process(tokens, av, pathnumb);
+				free(tokens);
 				free(line);
 				if (status == 42)
 				{
 					exit(0);
 				}
-				free(tokens);
 			}
 			else
 			{
