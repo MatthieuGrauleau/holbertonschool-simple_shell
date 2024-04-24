@@ -1,0 +1,52 @@
+_________________________________________      _______________________________  
+7     77  77        77     77  7   7     7     7     77  7  77     77  7   7  7    
+|  ___!|  ||  _  _  ||  -  ||  |   |  ___!     |  ___!|  !  ||  ___!|  |   |  |    
+!__   7|  ||  7  7  ||  ___!|  !___|  __|_     !__   7|     ||  __|_|  !___|  !___ 
+7     ||  ||  |  |  ||  7   |     7|     7     7     ||  7  ||     7|     7|     7 
+!_____!!__!!__!__!__!!__!   !_____!!_____!     !_____!!__!__!!_____!!_____!!_____! 
+______________     __________________   ___________________________________________
+7  _  77  7  7     7  7  77     77  7   7  _  77     77  _  77      77     77     7
+|   __||  !  |     |  !  ||  7  ||  |   |   __||  ___!|    _|!__  __!|  7  ||  _  |
+|  _  |!_   _!     |     ||  |  ||  !___|  _  ||  __|_|  _ \   7  7  |  |  ||  7  |
+|  7  | 7   7      |  7  ||  !  ||     7|  7  ||     7|  7  |  |  |  |  !  ||  |  |
+!_____! !___!      !__!__!!_____!!_____!!_____!!_____!!__!__!  !__!  !_____!!__!__!
+.TH SIMPLE SHELL 1 "April 20, 2024" "version 0.1" "Simple Shell Manual"
+.SH NAME
+simple shell \- Simple interactive shell developed by students for Holberton
+.SH SYNOPSIS
+simple_shell
+.SH DESCRIPTION
+simple shell is a simple interactive shell developed as an exercise by students at Holberton School. It allows the user to enter commands and execute them.
+
+When simple shell is executed, it displays a command prompt "$ " and waits for the user to enter a command. Once the command is entered, simple shell processes and executes it.
+
+simple shell also supports some built-in commands to provide additional functionality.
+
+.SH COMMANDS
+simple shell supports the following commands:
+.TP
+.B env
+Display the currently set environment variables.
+.TP
+.B exit
+Exit the shell. If an exit code is specified, the shell exits with that code.
+.TP
+.B ^D
+Allows quitting the shell by pressing Ctrl+D.
+.SH EXAMPLES
+.TP
+pwd
+Print the working directory
+.TP
+ls
+List and display files in the directory.
+.SH EXIT STATUS
+If you type "exit", you exit the simple shell. Or if you press Ctrl+D, you exit the shell with exit status 0.
+.SH AUTHOR
+simple shell was developed by:
+.TP
+Matthieu Grauleau <m.grauleau@gmail.com>
+Baptiste Pouquerou <baptiste.pouquerou@gmail.com>
+David Sellier De Brugiere <gauliath@msn.com>
+.SH REPORTING BUGS
+Bugs in simple shell can be reported by emailing any of the authors listed above.
