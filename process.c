@@ -18,7 +18,7 @@ int process(char **token, char **av, int path)
 
     if (token[0] == NULL)
     {
-        return (0);
+        exit(1);
     }
     
     built = built_in(token);
@@ -26,24 +26,29 @@ int process(char **token, char **av, int path)
     {
         return (built);
     }
-
-    while (*env != NULL)
+    if (access(token[0], X_OK) == 0)
     {
-        if (strncmp(*env, "PATH=", 5) == 0)
+        /* Execute the command directly (no need for PATH) */
+        if (execve(token[0], token, environ) == -1)
         {
-            paths = *env + 5;
-            break;
+            perror("execve");
+           exit(127);
         }
-        env++;
-    } 
-    if (access(token[0], X_OK) == -1) 
-    {
-            fprintf(stderr, phraze, token[0], getpid(), token[0]);
-            exit (127);
     }
-    pid = fork();
-    if (pid == 0)
-    {
+    else
+    { 
+        pid = fork();
+        if (pid == 0)
+        {
+            while (*env != NULL)
+            {
+                if (strncmp(*env, "PATH=", 5) == 0)
+                {
+                    paths = *env + 5;
+                    break;
+                }
+                env++;
+            }
             if (paths != NULL)
             {
                 paths = strtok(paths, ":");
@@ -52,7 +57,7 @@ int process(char **token, char **av, int path)
                     char *full_path = malloc(strlen(paths) + 1 + strlen(token[0]) + 1);
                     if (full_path == NULL)
                     {
-						free(full_path);
+                        free(full_path);
                         exit(1);
                     }
                     strcpy(full_path, paths);
@@ -62,7 +67,7 @@ int process(char **token, char **av, int path)
                     {
                         if (execve(full_path, token, environ) == -1)
                         {
-							free(full_path);
+                            free(full_path);
                             exit(127);
                         }
                     }
@@ -70,21 +75,16 @@ int process(char **token, char **av, int path)
                     free(full_path);
                 }
             }
-            else
-            {
-                if (execve(token[0], token, environ) == -1)
-                {
-                    exit(1);
-                }
-            }
+
             fprintf(stderr, phraze, av[0], path, token[0]);
             free(token);
-            exit(1);
-    }
-    else
-    {
-        wait(&status);
-        return (status);
+            exit(127);
+        }
+        else
+        {
+            wait(&status);
+            return (status);
+        }
     }
     return (0);
 }
