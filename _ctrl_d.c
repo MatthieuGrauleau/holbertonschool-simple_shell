@@ -8,5 +8,5 @@
 int ctrld(char **token)
 {
 	(void)token;
-	return (42);
+	return (42); /*Return 42 to signal to exit the shell*/
 }
