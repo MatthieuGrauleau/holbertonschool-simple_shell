@@ -12,13 +12,13 @@ char *get_line(void)
 
 	if (isatty(STDIN_FILENO))
 	{
-		prompt();
+		prompt(); /*Display the shell prompt if in an interactive shell*/
 	}
 
 	if (getline(&line, &line_size, stdin) == -1)
 	{
 		free(line);
-		return (NULL);
+		return (NULL); /*Return NULL if EOF is reached or error occurs*/
 	}
 	return (line);
 }
