@@ -15,6 +15,6 @@ int own_exit(char **token)
 	/* exit success */
 	else
 	{
-		return (42);
+		return (42); /*Return 42 to signal to exit the shell*/
 	}
 }
