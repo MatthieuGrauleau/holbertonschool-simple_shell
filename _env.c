@@ -6,6 +6,17 @@
 */
 int env(char **token)
 {
-(void)(**token);
-return (56);
+	int i = 0;
+
+	if (*token)
+	{
+		while (environ[i])
+		{
+			/*Print each environment variable*/
+			write(STDOUT_FILENO, environ[i], strlen(environ[i]));
+			write(STDOUT_FILENO, "\n", 1);
+			i++;
+		}
+	}
+	return (0);
 }

@@ -12,7 +12,7 @@ int main(int ac, char **av)
 {
 	char *line = NULL;
 	char **tokens;
-	int status = 0, pathnumb = 0, i = 0;
+	int status = 0, pathnumb = 0;
 	(void)ac;
 
 	while (1)
@@ -32,14 +32,6 @@ int main(int ac, char **av)
 			free(line);
 			if (status == 42)
 				exit(0); /*Exit if 'exit' command is entered*/
-			else if (status == 56)
-			{
-				while (environ[i])
-				{	/*Print each environment variable*/
-					printf("%s\n", environ[i]);
-					i++;
-				}
-			}
 		}
 		else
 		{
