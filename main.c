@@ -36,8 +36,7 @@ int main(int ac, char **av)
 			{
 				while (environ[i])
 				{	/*Print each environment variable*/
-					write(STDOUT_FILENO, environ[i], strlen(environ[i]));
-					write(STDOUT_FILENO, "\n", 1);
+					printf("%s\n", environ[i]);
 					i++;
 				}
 			}
