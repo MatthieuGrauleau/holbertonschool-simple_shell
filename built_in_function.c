@@ -9,12 +9,10 @@
 int built_in(char **token)
 {
 	char *builtin_func_list[] = {
-		"env",
 		"exit",
 		"^D"
 	};
 	int (*builtin_func[])(char **) = {
-		&env,
 		&own_exit,
 		&ctrld
 	};

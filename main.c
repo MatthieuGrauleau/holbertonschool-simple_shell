@@ -30,6 +30,8 @@ int main(int ac, char **av)
 				tokens = str_tok(line); /*Tokenize the input line*/
 				if (tokens == NULL)
 					free(line);
+				if (strcmp(tokens[0], "env") == 0)/*the user enter env*/
+					env();
 				status = process(tokens, av, pathnumb); /*Process the tokens*/
 				free(tokens);
 				free(line);

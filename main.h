@@ -23,7 +23,7 @@ int built_in(char **token);
 int handle_path(char **token, char *phraze, char **av, int path);
 
 /*built in function*/
-int env(char **token);
+void env(void);
 int ctrld(char **token);
 int own_exit(char **token);
 

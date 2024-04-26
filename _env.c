@@ -4,19 +4,14 @@
  * @token: argument
  * Return: return 1 after function
 */
-int env(char **token)
+void env(void)
 {
 	int i = 0;
 
-	if (*token)
-	{
-		while (environ[i])
+		while (environ[i] != NULL)
 		{
 			/*Print each environment variable*/
-			write(STDOUT_FILENO, environ[i], strlen(environ[i]));
-			write(STDOUT_FILENO, "\n", 1);
+			printf("%s\n", environ[i]);
 			i++;
 		}
-	}
-	return (0);
 }
