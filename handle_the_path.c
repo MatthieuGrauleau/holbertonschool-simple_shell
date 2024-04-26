@@ -38,11 +38,9 @@ int handle_path(char **token, char *phraze, char **av, int path)
 		strcat(full_path, token[0]);
 		if (access(full_path, X_OK) == 0) /*Check if the full path is executable*/
 		{	/*Execute the program with the full path*/
-			if (execve(full_path, token, environ) == -1)
-			{
-				free(full_path);
-				return (1);
-			}
+			execve(full_path, token, environ);
+			free(full_path);
+			return (1);
 		}
 		free(full_path);
 		path_token = strtok(NULL, ":");
