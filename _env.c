@@ -4,14 +4,9 @@
  * @token: argument
  * Return: return 1 after function
 */
-void env(void)
+int env(char **token)
 {
-	int i = 0;
-
-		while (environ[i] != NULL)
-		{
-			/*Print each environment variable*/
-			printf("%s\n", environ[i]);
-			i++;
-		}
+	if (*token)
+		return (56);
+return (1);
 }

@@ -12,44 +12,42 @@ int main(int ac, char **av)
 {
 	char *line = NULL;
 	char **tokens;
-	int status = 0, pathnumb = 0;
+	int status = 0, pathnumb = 0, i = 0;
 	(void)ac;
-
 
 	while (1)
 	{
 		errno = 0;
 		line = get_line(); /*Read a line from stdin*/
 		if (line == NULL && errno == 0)
-		{
 			exit(1); /*Exit if EOF is reached or error occurs*/
-		}
-			if (line)
-			{
-				pathnumb++;
-				tokens = str_tok(line); /*Tokenize the input line*/
-				if (tokens == NULL)
-					free(line);
-				if (strcmp(tokens[0], "env") == 0)/*the user enter env*/
-					env();
-				status = process(tokens, av, pathnumb); /*Process the tokens*/
-				free(tokens);
+		if (line)
+		{
+			pathnumb++;
+			tokens = str_tok(line); /*Tokenize the input line*/
+			if (tokens == NULL)
 				free(line);
-				if (status == 42)
-				{
-					exit(0); /*Exit if 'exit' command is entered*/
-				}
-			}
-			else
+			status = process(tokens, av, pathnumb); /*Process the tokens*/
+			free(tokens);
+			free(line);
+			if (status == 42)
+				exit(0); /*Exit if 'exit' command is entered*/
+			else if (status == 56)
 			{
-				if (isatty(STDIN_FILENO))
-				{
-					/*Print a newline if in an interactive shell*/
+				while (environ[i])
+				{	/*Print each environment variable*/
+					write(STDOUT_FILENO, environ[i], strlen(environ[i]));
 					write(STDOUT_FILENO, "\n", 1);
+					i++;
 				}
-				exit(status);
 			}
-
+		}
+		else
+		{
+			if (isatty(STDIN_FILENO))/*Print a newline if in an interactive shell*/
+				write(STDOUT_FILENO, "\n", 1);
+			exit(status);
+		}
 	}
 	exit(status);
 }
