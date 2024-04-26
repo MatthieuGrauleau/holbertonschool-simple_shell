@@ -40,7 +40,6 @@ int process(char **token, char **av, int path)
 	else /* Parent process*/
 	{
 		wait(&status); /*Wait for the child process to complete*/
-		return (status);
 	}
 	return (0);
 }

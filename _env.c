@@ -6,7 +6,6 @@
 */
 int env(char **token)
 {
-	if (*token)
-		return (56);
-return (1);
+(void)(**token);
+return (56);
 }
